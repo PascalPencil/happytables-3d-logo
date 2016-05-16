@@ -1,0 +1,184 @@
+body {
+  margin: 20px;
+}
+
+.happytable {
+  font-size: 20px;
+  perspective: 0;
+  padding: 4.1em 2.6em 0em;
+  width: 10em;
+  height: 10em;
+  display: inline-block;
+}
+.happytable.arrive {
+  animation: arrive 0.5s normal forwards ease-in-out;
+}
+.happytable.leave {
+  animation: leave 0.5s normal forwards ease-in-out;
+}
+.happytable img {
+  max-width: 100%;
+}
+.happytable .frame {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  transform: scale(1) translateZ(1em) rotateX(-34deg) rotateY(25deg);
+  opacity: 1;
+}
+.happytable .frame.spin {
+  animation: rotate-stop 3s ease-in-out infinite;
+}
+.happytable .frame .top {
+  transform-style: preserve-3d;
+}
+.happytable .frame .top.step-one {
+  animation: dropdown 0.5s normal forwards ease-in-out;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+.happytable .frame .top .edge {
+  display: block;
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  background: #FF7200;
+  transform-style: preserve-3d;
+}
+.happytable .frame .top .edge.front {
+  transform: rotateY(0deg) translateZ(5em);
+  height: 1em;
+  background: #ff801a;
+}
+.happytable .frame .top .edge.back {
+  transform: rotateX(180deg) translateZ(5em);
+  height: 1em;
+  background: #cc5b00;
+}
+.happytable .frame .top .edge.right {
+  transform: rotateY(90deg) translateZ(5em);
+  height: 1em;
+  background: #ff8e33;
+}
+.happytable .frame .top .edge.left {
+  transform: rotateY(-90deg) translateZ(5em);
+  height: 1em;
+  background: #e66700;
+}
+.happytable .frame .top .edge.top {
+  transform: rotateX(90deg) translateZ(5em);
+}
+.happytable .frame .top .edge.bottom {
+  transform: rotateX(-90deg) translateZ(-4.5em);
+}
+.happytable .frame .step-three {
+  opacity: 0;
+  animation: dropdown 0.5s normal forwards ease-in-out;
+  transform-style: preserve-3d;
+  animation-delay: 0.5s;
+}
+.happytable .frame .shadow {
+  display: block;
+  position: absolute;
+  width: 8em;
+  height: 8em;
+  top: 1em;
+  left: 1em;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  transform: rotateX(-90deg) translateZ(0em);
+}
+.happytable .frame .legs {
+  transform-style: preserve-3d;
+}
+.happytable .frame .legs.step-two {
+  opacity: 0;
+  animation: dropdown 0.5s normal forwards ease-in-out;
+}
+.happytable .frame .legs .leg {
+  transform-style: preserve-3d;
+}
+.happytable .frame .legs .leg.one {
+  transform: translateZ(-4.5em) translateY(1em);
+}
+.happytable .frame .legs .leg.two {
+  transform: translateZ(-4.5em) translateY(1em) translateX(9em);
+}
+.happytable .frame .legs .leg.three {
+  transform: translateZ(4.5em) translateY(1em) translateX(9em);
+}
+.happytable .frame .legs .leg.four {
+  transform: translateZ(4.5em) translateY(1em);
+}
+.happytable .frame .legs .leg .edge {
+  transform-style: preserve-3d;
+  display: block;
+  position: absolute;
+  width: 1em;
+  height: 4em;
+  background: #FF7200;
+}
+.happytable .frame .legs .leg .edge.front {
+  transform: rotateY(0deg) translateZ(0.5em);
+  background: #ff801a;
+}
+.happytable .frame .legs .leg .edge.back {
+  transform: rotateX(180deg) translateZ(0.5em);
+  background: #cc5b00;
+}
+.happytable .frame .legs .leg .edge.right {
+  transform: rotateY(90deg) translateZ(0.5em);
+  background: #ff8e33;
+}
+.happytable .frame .legs .leg .edge.left {
+  transform: rotateY(-90deg) translateZ(0.5em);
+  background: #e66700;
+}
+.happytable .frame .legs .leg .edge.bottom {
+  transform: rotateX(-90deg) translateZ(3.5em);
+  height: 1em;
+}
+
+@keyframes rotate-stop {
+  0%, 60% {
+    transform: translateZ(1em) rotateX(-34deg) rotateY(25deg);
+  }
+  100% {
+    transform: translateZ(1em) rotateX(-34deg) rotateY(385deg);
+  }
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes leave {
+  from {
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0em);
+  }
+}
